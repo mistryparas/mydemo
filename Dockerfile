@@ -2,7 +2,8 @@ FROM centos:latest
 MAINTAINER mistryparas15@gmail.com
 RUN yum install -y httpd \
   zip \
-  unzip
+  unzip \
+  wget
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page247/kindle.zip
 WORKDIR /var/www/html
 RUN unzip kindle.zip
