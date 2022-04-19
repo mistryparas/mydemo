@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: myproject
+
+spec:
+  selector:
+    matchLabels:
+      app: myproject-test
+  replicas: 10
+  strategy:
+    canary:
+      canaryService: duclo-dev-canary-service
+      stableService: duclo-dev-service
+      maxSurge: "25%"
+      maxUnavailable: 1
+      steps:
+      - setWeight: 10
+      - pause:
+          duration: 3m
+      - setWeight: 20
+      - pause: {}
+
+  template:
+    metadata:
+      labels:
+        app: myproject-test
+    spec:
+      containers:
+      - name: myproject-bg
+        image: 192.168.56.250:8083/myproject:1.57
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+      imagePullSecrets:
+        - name: nexusrepo-dev
