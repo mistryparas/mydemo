@@ -10,13 +10,7 @@ spec:
   replicas: 10
   strategy:
     canary:
-      canaryService: duclo-dev-canary-service
-      stableService: duclo-dev-service
-      maxSurge: "25%"
-      maxUnavailable: 1
-      steps:
-      - setWeight: 20
-      - pause: {}
+      dynamicStableScale: true
       
   template:
     metadata:
