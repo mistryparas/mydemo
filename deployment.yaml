@@ -1,30 +1,31 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: myproject
-  namespace: duclo-dev
+
 spec:
   selector:
     matchLabels:
       app: myproject-test
   replicas: 10
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
-
+  revisionHistoryLimit: 2
   template:
     metadata:
       labels:
         app: myproject-test
     spec:
       containers:
-      - name: myproject-dev
-        image: 192.168.56.250:8083/myproject:1.58
+      - name: myproject-bg
+        image: 192.168.56.250:8083/myproject:1.57
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
           protocol: TCP
       imagePullSecrets:
         - name: nexusrepo-dev
+
+    strategy:
+      blueGreen:
+        activeService: duclo-dev-blue-service
+        previewService: duclo-dev-green-service
+        autoPromotionEnabled: false
