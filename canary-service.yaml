@@ -6,7 +6,7 @@ metadata:
 spec:
   ports:
   - port: 8080
-    nodePort: 30034
+    nodePort: 30044
     protocol: TCP
   selector:
     app: myproject-test
