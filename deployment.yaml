@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: myproject-test
-  replicas: 6
+  replicas: 10
   strategy:
     type: RollingUpdate
     rollingUpdate:
