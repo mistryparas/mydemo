@@ -20,7 +20,7 @@ spec:
       - setWeight: 50
         - pause:
           duration: 10
-      - setWeight: 100
+      - setWeight: 90
 
   template:
     metadata:
@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - name: myproject-bg
-        image: 192.168.56.250:8083/myproject:1.53
+        image: 192.168.56.250:8083/myproject:1.54
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
