@@ -9,7 +9,10 @@ spec:
       app: myproject-test
   replicas: 10
   strategy:
-    type: Recreate
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
 
   template:
     metadata:
@@ -18,7 +21,7 @@ spec:
     spec:
       containers:
       - name: myproject-dev
-        image: 192.168.56.250:8083/myproject:1.52
+        image: 192.168.56.250:8083/myproject:1.53
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
