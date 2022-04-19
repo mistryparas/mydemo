@@ -1,5 +1,5 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: myproject
   namespace: duclo-dev
@@ -28,3 +28,13 @@ spec:
           protocol: TCP
       imagePullSecrets:
         - name: nexusrepo-dev
+    strategy:
+      canary: #Indicates that the rollout should use the Canary strategy
+        maxSurge: "25%"
+        maxUnavailable: 0
+        steps:
+        - setWeight: 10
+        - pause:
+            duration: 3m # 1 hour
+        - setWeight: 20
+        - pause: {} # pause indefinitely
