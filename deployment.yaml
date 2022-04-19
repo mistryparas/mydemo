@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myproject
+  namespace: duclo-dev
+spec:
+  selector:
+    matchLabels:
+      app: myproject-test
+  replicas: 6
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+
+  template:
+    metadata:
+      labels:
+        app: myproject-test
+    spec:
+      containers:
+      - name: myproject-dev
+        image: 192.168.56.250:8083/myproject:1.58
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+      imagePullSecrets:
+        - name: nexusrepo-dev
