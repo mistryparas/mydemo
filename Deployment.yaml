@@ -10,9 +10,8 @@ spec:
   replicas: 10
   strategy:
     blueGreen:
-      activeService: duclo-dev-blue-service
-      previewService: duclo-dev-green-service
-      autoPromotionEnabled: false
+      activeService: duclo-dev-green-service
+      previewService: duclo-dev-blue-service
 
   revisionHistoryLimit: 2
   template:
