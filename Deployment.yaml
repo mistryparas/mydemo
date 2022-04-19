@@ -15,13 +15,9 @@ spec:
       maxSurge: "25%"
       maxUnavailable: 1
       steps:
-      - setWeight: 10
+      - setWeight: 20
       - pause: {}
-      - setWeight: 50
-      - pause:
-          duration: 10s
-      - setWeight: 90
-
+      
   template:
     metadata:
       labels:
