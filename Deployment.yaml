@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: myproject-bg
-        image: 192.168.56.250:8083/myproject:1.52
+        image: 192.168.56.250:8083/myproject:1.53
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
