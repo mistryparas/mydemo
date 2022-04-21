@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: myproject-test
-  replicas: 10
+  replicas: 25
   strategy:
     blueGreen:
       activeService: duclo-dev-green-service
@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: myproject-bg
-        image: 192.168.56.250:8083/myproject:1.53
+        image: 192.168.56.250:8083/myproject:1.55
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
