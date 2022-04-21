@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myproject
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: myproject-test
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: Recreate
+
+  template:
+    metadata:
+      labels:
+        app: myproject-test
+    spec:
+      containers:
+      - name: {{ .Values.name }}
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: {{ .Values.image.containerport }}
+          protocol: TCP
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets }}
+
