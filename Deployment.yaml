@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: myproject-test
-  replicas: 10
+  replicas: 15
   strategy:
     blueGreen:
       activeService: duclo-dev-green-service
