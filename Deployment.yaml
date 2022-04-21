@@ -7,11 +7,11 @@ spec:
   selector:
     matchLabels:
       app: myproject-test
-  replicas: 10
+  replicas: 20
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 2
+      maxSurge: 5
       maxUnavailable: 1
 
   template:
