@@ -10,7 +10,7 @@ spec:
   replicas: 10
   strategy:
     canary:
-      canaryService: duclo-dev-service
+      canaryService: duclo-dev-canary-service
       stableService: duclo-dev-service
       maxSurge: "25%"
       maxUnavailable: 1
