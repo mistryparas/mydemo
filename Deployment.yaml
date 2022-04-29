@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: myproject-test
-  replicas: 10
+  replicas: 4
   strategy:
     type: Recreate
 
