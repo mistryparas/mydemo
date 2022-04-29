@@ -4,27 +4,32 @@ metadata:
   name: helloworld
   namespace: duclo-dev
 spec:
+  replicas: 10
   selector:
     matchLabels:
       app: hello-duclo
-  replicas: 4
-  strategy:
-    blueGreen:
-      activeService: duclo-dev-green-service
-      previewService: duclo-dev-blue-service
-
-  revisionHistoryLimit: 2
   template:
     metadata:
       labels:
         app: hello-duclo
     spec:
       containers:
-      - name: helloworld-bg
-        image: 192.168.56.250:8083/docker-helloworld:1.20
+      - name: helloworld-dev
+        image: 192.168.56.250:8083/docker-helloworld:1.13
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
-          protocol: TCP
+          protocol: TCP      
       imagePullSecrets:
-        - name: nexusrepo-dev
+        - name: nexusrepo-dev     
+  minReadySeconds: 30
+  revisionHistoryLimit: 3
+  strategy:
+    canary: #Indicates that the rollout should use the Canary strategy
+      maxSurge: "25%"
+      maxUnavailable: 0
+      steps:
+      - setWeight: 10
+      - pause:
+          duration: 50
+      - setWeight: 20
