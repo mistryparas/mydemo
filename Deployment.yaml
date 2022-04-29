@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld
+  namespace: duclo-dev
+spec:
+  selector:
+    matchLabels:
+      app: hello-duclo
+  replicas: 4
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+
+  template:
+    metadata:
+      labels:
+        app: hello-duclo
+    spec:
+      containers:
+      - name: helloworld-dev-dev
+        image: 192.168.56.250:8083/docker-helloworld:1.13
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+      imagePullSecrets:
+        - name: nexusrepo-dev
