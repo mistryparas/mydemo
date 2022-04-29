@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: helloworld-bg
-        image: 192.168.56.250:8083/docker-helloworld:1.13
+        image: 192.168.56.250:8083/docker-helloworld:1.21
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
