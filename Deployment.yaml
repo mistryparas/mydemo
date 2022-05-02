@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: hello-duclo
-  replicas: 10
+  replicas: 4
   strategy:
     type: RollingUpdate
     rollingUpdate:
