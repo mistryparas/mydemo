@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: hello-duclo
-  replicas: 4
+  replicas: 10
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: helloworld-dev-dev
-        image: 192.168.56.250:8083/docker-helloworld:1.13
+        image: 192.168.56.250:8083/duclo-partner-service:2.21
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
