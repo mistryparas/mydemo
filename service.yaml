@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: duclo-dev-service
+  namespace: duclo-dev
+spec:
+  ports:
+  - port: 8080
+    nodePort: 30033
+    protocol: TCP
+  selector:
+    app: hello-duclo
+  type: NodePort
