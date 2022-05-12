@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dockertest2
+  namespace: grouptest2
+spec:
+  selector:
+    matchLabels:
+      app: dockertest2
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+
+  template:
+    metadata:
+      labels:
+        app: dockertest2
+    spec:
+      containers:
+      - name: dockertest2
+        image: 192.168.56.250:9092/dockertest2:2.7
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+      imagePullSecrets:
+        - name: repocrd-test2
