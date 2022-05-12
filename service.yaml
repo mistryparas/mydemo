@@ -1,11 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: dockertest1
+  name: service-docker1
   namespace: dockertest1
 spec:
   ports:
   - port: 8080
+    nodePort: 30044
+    protocol: TCP
   selector:
     app: dockertest1
   type: NodePort
