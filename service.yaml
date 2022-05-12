@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: service-docker1
-  namespace: dockertest1
+  namespace: grouptest1
 spec:
   ports:
   - port: 8080
