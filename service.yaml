@@ -6,7 +6,7 @@ metadata:
 spec:
   ports:
   - port: 8080
-    nodePort: 30044
+    nodePort: 30031
     protocol: TCP
   selector:
     app: dockertest1
