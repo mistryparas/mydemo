@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-docker1
-  namespace: grouptest1
+  name: sysadmin-account-svc
+  namespace: sysadmin-account
 spec:
   ports:
   - port: 8080
-    nodePort: 30031
+    nodePort: 30035
     protocol: TCP
   selector:
-    app: dockertest1
+    app: sysadmin-account-app
   type: NodePort
