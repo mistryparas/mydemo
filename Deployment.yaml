@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: sysadmin-account-dev
-        image: 192.168.56.250:8085/backend-sysadmin-account:v0.0.1-7
+        image: 192.168.56.250:8085/backend-sysadmin-account:v0.0.1-8
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
