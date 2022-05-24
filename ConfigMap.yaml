@@ -1,9 +1,0 @@
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: sysaccount-configmap
-  namespace: sysadmin-account
-data:
-  AWS_DYNAMODB_ENDPOINT: "https://dynamodb.us-west-2.amazonaws.com"
-  AWS_ACCESS_KEY_ID: "AKIA2F4WRZOGJMDUQ2KU"
-  AWS_SECRET_ACCESS_KEY: "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"
