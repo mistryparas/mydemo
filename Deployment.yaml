@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dockertest1
-  namespace: grouptest1
+  name: sysaccount-deployment
+  namespace: sysadmin-account
 spec:
   selector:
     matchLabels:
-      app: dockertest1
+      app: sysadmin-account-app
   replicas: 2
   strategy:
     type: RollingUpdate
@@ -17,14 +17,14 @@ spec:
   template:
     metadata:
       labels:
-        app: dockertest1
+        app: sysadmin-account-app
     spec:
       containers:
-      - name: dockertest1
-        image: 192.168.56.250:9091/dockertest1:1.8
+      - name: sysadmin-account-dev
+        image: 192.168.56.250:8085/backend-sysadmin-account:v0.0.1-7
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
           protocol: TCP
       imagePullSecrets:
-        - name: grouptest1
+        - name: 
