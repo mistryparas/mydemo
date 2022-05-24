@@ -27,7 +27,7 @@ spec:
         - containerPort: 8080
           protocol: TCP
         envForm:
-        - ConfigMapRef:
-            name: sysaccount-configmap        
+          - ConfigMapRef:
+              name: sysaccount-configmap        
       imagePullSecrets:
         - name: nxu-sa-repo
