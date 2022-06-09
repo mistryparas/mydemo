@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: canary-dockertest1
-  replicas: 1
+  replicas: 0
   strategy:
     type: RollingUpdate
     rollingUpdate:
