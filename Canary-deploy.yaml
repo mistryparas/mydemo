@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Canary-dockertest1
+  name: canary-dockertest1
   namespace: grouptest1
 spec:
   selector:
     matchLabels:
-      app: Canary-dockertest1
+      app: canary-dockertest1
   replicas: 1
   strategy:
     type: RollingUpdate
@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       labels:
-        app: Canary-dockertest1
+        app: canary-dockertest1
     spec:
       containers:
       - name: dockertest1
