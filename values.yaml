@@ -1,0 +1,41 @@
+namespace: helloworld
+
+deployment:
+  replicas: 2
+  image: 192.168.56.250:9092/dockertest2
+  tag: "4.0.5"
+  app_name: helloworld-dev
+  imagePullPolicy: Always
+  containerPort: 8080
+  protocol: TCP
+
+service:
+  name: helloworld-svc-dev
+  port: 8080
+  nodePort: 30010
+  selector_app: helloworld-app
+  service_type: NodePort
+  protocol: TCP
+  
+secret:
+  name: helloworld-repo
+
+canaryService:
+  name: canary-helloworld-svc
+  port: 8080
+  nodePort: 30009
+  selector_app: canary-helloworld
+  service_type: NodePort
+  protocol: TCP
+
+canaryDeploy:
+  replicas: 0
+  image: 192.168.56.250:9092/dockertest2
+  tag: "4.0.5"
+  app_name: canary-helloworld
+  imagePullPolicy: Always
+  containerPort: 8080
+  protocol: TCP
+
+sa:
+  name: helloworld-sa
