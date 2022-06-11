@@ -2,7 +2,7 @@ namespace: helloworld
 
 deployment:
   replicas: 2
-  image: 192.168.56.250:9092/dockertest2
+  image: 192.168.56.250:8084/repository/sysadmin-service
   tag: "4.0.5"
   app_name: helloworld-dev
   imagePullPolicy: Always
@@ -30,7 +30,7 @@ canaryService:
 
 canaryDeploy:
   replicas: 0
-  image: 192.168.56.250:9092/dockertest2
+  image: 192.168.56.250:8084/repository/sysadmin-service
   tag: "4.0.5"
   app_name: canary-helloworld
   imagePullPolicy: Always
